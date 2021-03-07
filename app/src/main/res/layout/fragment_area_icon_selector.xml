@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jeanbarrossilva.andre.ui.AndreLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:verticalSpacing="35dp"
+    tools:padding="@dimen/andre_dialog_fragment_default_padding">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AreaIconSelectorFragment_select_icon"
+        android:textAppearance="@style/Theme.Andre.Dialog.Title" />
+
+    <com.jeanbarrossilva.andre.ui.AreaIconSelectorLayout
+        android:id="@+id/icons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.jeanbarrossilva.andre.ui.AndreLinearLayout>

@@ -17,7 +17,9 @@ class AreaComposerFragment:
 		viewModel.run {
 			configFab()
 			focusPrimaryField()
-			listenFields()
+			configFields()
+			configIconButton()
+			waitForIconSelection()
 		}
 	}
 	

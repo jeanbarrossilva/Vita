@@ -9,8 +9,8 @@ object TextInputLayoutX {
 	val TextInputLayout.field get() = editText!!
 	
 	fun TextInputLayout.asPercentageField(
-		@IntRange(from = 0, to = 100) minimum: Int,
-		@IntRange(from = 0, to = 100) maximum: Int
+		@IntRange(from = 0, to = 100) minimum: Int = 0,
+		@IntRange(from = 0, to = 100) maximum: Int = 100
 	) {
 		suffixText = "%"
 		field.doSilentlyOnTextChanged { text ->
@@ -20,5 +20,6 @@ object TextInputLayoutX {
 				value < minimum -> setText("$minimum")
 			}
 		}
+		field.setText("$minimum")
 	}
 }

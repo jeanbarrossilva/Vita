@@ -2,6 +2,7 @@
 <com.jeanbarrossilva.andre.ui.AndreLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="40dp"
@@ -53,5 +54,14 @@
             android:maxLength="3" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Theme.Andre.Button.Outlined"
+        android:id="@+id/icon_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/AreaComposerFragment_icon"
+        app:cornerRadius="0dp"
+        tools:icon="@drawable/ic_family_restroom" />
 
 </com.jeanbarrossilva.andre.ui.AndreLinearLayout>

@@ -1,4 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <item name="horizontalSpacing" type="dimen" />
+    <item name="verticalSpacing" type="dimen" />
+
     <style
         name="Theme.Andre"
         parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -29,6 +32,16 @@
         <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
+    <style name="Theme.Andre.BottomSheet.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style
+        name="Theme.Andre.Dialog.Title"
+        parent="Theme.Andre.BottomSheet.Title" />
+
     <style
         name="Theme.Andre.Button"
         parent="Widget.MaterialComponents.Button">
@@ -44,14 +57,31 @@
     </style>
 
     <style
+        name="Theme.Andre.Button.Outlined"
+        parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:padding">20dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">?android:colorControlNormal</item>
+        <item name="android:backgroundTint">@color/cardBackground</item>
+        <item name="rippleColor">@color/andreButtonRipple</item>
+        <item name="iconTint">?android:colorControlNormal</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+
+    <style
         name="Theme.Andre.TextInputLayout"
         parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:maxLines">2</item>
     </style>
 
     <declare-styleable name="AndreLinearLayout">
-        <attr name="android:horizontalSpacing" format="dimension" />
-        <attr name="android:verticalSpacing" format="dimension" />
+        <attr name="android:horizontalSpacing" />
+        <attr name="android:verticalSpacing" />
+    </declare-styleable>
+
+    <declare-styleable name="AndreFlexboxLayout">
+        <attr name="android:horizontalSpacing" />
+        <attr name="android:verticalSpacing" />
     </declare-styleable>
 
     <declare-styleable name="AndreEditText">

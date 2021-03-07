@@ -33,4 +33,6 @@
     <string name="dialog_message_send_feedback_error">Você precisa de um aplicativo de e-mail para enviar um feedback.</string>
     <string name="AreaComposerFragment_complaint_name">O nome não pode ficar vazio.</string>
     <string name="AreaComposerFragment_complaint_attention_level">O nível de atenção deve ser maior que 0.</string>
+    <string name="AreaIconSelectorFragment_select_icon">Selecionar ícone</string>
+    <string name="AreaComposerFragment_icon">Ícone</string>
 </resources>

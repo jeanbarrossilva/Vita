@@ -3,7 +3,6 @@ package com.jeanbarrossilva.andre.ui
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.Icon
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
@@ -21,7 +20,7 @@ import com.jeanbarrossilva.andre.extension.ContextX.drawableOf
 import com.jeanbarrossilva.andre.extension.ContextX.withStyledAttributes
 import com.jeanbarrossilva.andre.extension.NumberX.dp
 
-class IconButton : CardView {
+open class IconButton : CardView {
     private lateinit var iconLayout: FrameLayout
     private lateinit var iconView: ImageView
 
@@ -94,10 +93,6 @@ class IconButton : CardView {
         }
         getAttributes(attrs, defStyleAttr)
         addViews()
-    }
-
-    fun setImageIcon(icon: Icon) {
-        this.icon = icon.loadDrawable(context)
     }
 
     fun setImageResource(@DrawableRes iconRes: Int, @ColorRes tint: Int) {

@@ -22,6 +22,7 @@ object ContextX {
 	val Context.navigationBarColor get() = getColor(R.color.navigationBar)
 	val Context.preferences: SharedPreferences
 		get() = PreferenceManager.getDefaultSharedPreferences(this)
+	val Context.primaryColor get() = getColor(R.color.primary)
 	val Context.primaryTextColor get() = colorOf(android.R.attr.textColorPrimary)
 	val Context.statusBarColor get() = getColor(R.color.statusBar)
 	val Context.isSystemInLightTheme get() = resources.getBoolean(R.bool.isSystemInLightTheme)

@@ -45,7 +45,8 @@ class AreaDetailsViewModel(private val fragment: AreaDetailsFragment) : ViewMode
                     with(fragment.requireContext()) {
                         if (isEditing) area.color else primaryTextColor
                     }
-
+                
+                iconButton.iconTint = area.color
                 iconButton.background = iconButtonBackground
                 iconButton.setOnClickListener { onIconButtonClick() }
                 iconButton.setImageResource(area.iconRes, area.color)

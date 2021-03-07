@@ -7,7 +7,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type.ime
 
 object ViewX {
-    private val View.rootWindowInsetsCompat
+    val View.rootWindowInsetsCompat
         get() = WindowInsetsCompat.toWindowInsetsCompat(rootWindowInsets)
     
     fun View.setOnSoftInputListener(listener: (isVisible: Boolean) -> Unit) =

@@ -49,8 +49,11 @@
     <string name="AreaComposerFragment_name">Name</string>
     <string name="AreaComposerFragment_description">Description</string>
     <string name="AreaComposerFragment_attention_level">Attention level</string>
+    <string name="AreaComposerFragment_icon">Icon</string>
     <string name="AreaComposerFragment_complaint_name">Name can\'t be empty.</string>
     <string name="AreaComposerFragment_complaint_attention_level">Attention level must be greater than 0.</string>
+
+    <string name="AreaIconSelectorFragment_select_icon">Select icon</string>
 
     <string name="AreaDetailsFragment_toast_default_area_edit">You cannot edit a default area.</string>
     <string name="AreaDetailsFragment_edit">Edit</string>

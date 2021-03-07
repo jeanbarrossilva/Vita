@@ -53,11 +53,23 @@
         android:id="@+id/areaComposerFragment"
         android:name="com.jeanbarrossilva.andre.fragment.AreaComposerFragment"
         android:label="@string/AreaComposerFragment_label"
-        tools:layout="@layout/fragment_area_composer" />
+        tools:layout="@layout/fragment_area_composer">
+
+        <action
+            android:id="@+id/select_icon"
+            app:destination="@id/areaIconSelectorFragment" />
+
+    </fragment>
 
     <dialog
         android:id="@+id/generosityBoxFragment"
         android:name="com.jeanbarrossilva.andre.fragment.GenerosityBoxFragment"
         tools:layout="@layout/fragment_generosity_box" />
+
+    <dialog
+        android:id="@+id/areaIconSelectorFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.AreaIconSelectorFragment"
+        android:label="AreaIconSelectorFragment"
+        tools:layout="@layout/fragment_area_icon_selector" />
 
 </navigation>
