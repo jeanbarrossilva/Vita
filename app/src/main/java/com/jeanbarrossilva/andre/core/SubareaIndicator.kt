@@ -3,9 +3,10 @@ package com.jeanbarrossilva.andre.core
 import androidx.annotation.StringRes
 import com.jeanbarrossilva.andre.R
 import com.jeanbarrossilva.andre.extension.ListX.greater
+import java.io.Serializable
 
 @Suppress("Unused")
-sealed class SubareaIndicator(@StringRes val titleRes: Int) {
+sealed class SubareaIndicator(@StringRes val titleRes: Int): Serializable {
 	object Unset: SubareaIndicator(R.string.SubareaIndicator_title_unset)
 
 	object Deficient: SubareaIndicator(R.string.SubareaIndicator_title_deficient)

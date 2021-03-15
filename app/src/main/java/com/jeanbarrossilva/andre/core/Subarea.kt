@@ -6,13 +6,14 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.jeanbarrossilva.andre.R
+import java.io.Serializable
 
 sealed class Subarea(
 	@DrawableRes val iconRes: Int,
 	val title: String,
 	@ColorInt val color: Int,
 	open var indicator: SubareaIndicator = SubareaIndicator.Unset
-) {
+): Serializable {
 	constructor(
 		context: Context,
 		@DrawableRes iconRes: Int,
