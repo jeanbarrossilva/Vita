@@ -1,20 +1,17 @@
 package com.jeanbarrossilva.andre.viewmodel
 
-import android.graphics.Color
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
 import com.jeanbarrossilva.andre.BuildConfig
 import com.jeanbarrossilva.andre.core.Subarea
 import com.jeanbarrossilva.andre.core.SubareaIndicator
 import com.jeanbarrossilva.andre.extension.ChartX.setExtraOffsets
-import com.jeanbarrossilva.andre.extension.ChartX.setOnChartValueSelectedListener
 import com.jeanbarrossilva.andre.fragment.SubareasFragment
 import com.jeanbarrossilva.andre.fragment.SubareasFragmentDirections
+import com.jeanbarrossilva.andre.interop.AndreChartEntry
+import com.jeanbarrossilva.andre.interop.implementation.AndrePieChart
 
 class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 	private val area = fragment.area
@@ -44,31 +41,24 @@ class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 	fun showSubareasInChart() {
 		val entries =
 			subareas.map { subarea ->
-				PieEntry(
-					subarea.indicator.levelAsPercentage(),
+				AndreChartEntry(
 					subarea.title,
-					ContextCompat.getDrawable(fragment.requireContext(), subarea.iconRes)
-				).apply { icon?.setTint(Color.WHITE) }
+					ContextCompat.getDrawable(fragment.requireContext(), subarea.iconRes)!!,
+					subarea.indicator.levelAsPercentage(),
+					subarea.color
+				)
 			}
-		val set =
-			PieDataSet(entries, "Subareas of ${area.title}").apply {
-				colors = subareas.map { subarea -> subarea.color }
-				valueTextColor = Color.TRANSPARENT
+		val chart =
+			AndrePieChart(fragment.requireContext()).apply {
+				showsEntryValues = false
+				onSelectEntry = {
+					val subarea = subareas[entries.indexOf(it)]
+					navigateToDetailsOf(subarea)
+				}
+				add(entries)
+				view.setExtraOffsets(30f)
 			}
-		val data = PieData(set)
 		
-		with(fragment.binding.subareasChart) {
-			this.data = data
-			legend?.isEnabled = false
-			description?.isEnabled = false
-			isDrawHoleEnabled = false
-			setExtraOffsets(30f)
-			setDrawEntryLabels(false)
-			setOnChartValueSelectedListener { entry, _ ->
-				val subarea = subareas[entries.indexOf(entry)]
-				navigateToDetailsOf(subarea)
-			}
-			invalidate()
-		}
+		fragment.binding.chartLayout.addView(chart.view)
 	}
 }
