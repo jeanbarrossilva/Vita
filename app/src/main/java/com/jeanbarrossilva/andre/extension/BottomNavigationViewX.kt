@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jeanbarrossilva.andre.core.Area
+import com.jeanbarrossilva.andre.core.CheckableColorStateList
+import com.jeanbarrossilva.andre.extension.ContextX.colorOf
 import com.jeanbarrossilva.andre.extension.MenuX.add
 
 object BottomNavigationViewX {
@@ -13,6 +15,14 @@ object BottomNavigationViewX {
 		}
 		setOnNavigationItemSelectedListener { item ->
 			val selectedArea = areas[item.order]
+			val colorStateList =
+				CheckableColorStateList(
+					uncheckedColor = context colorOf android.R.attr.colorControlNormal,
+					checkedColor = selectedArea.color
+				)
+			
+			itemIconTintList = colorStateList
+			itemTextColor = colorStateList
 			onSelectArea(selectedArea)
 			Log.d(
 				"BottomNavigationViewX.setupWithAreas",
