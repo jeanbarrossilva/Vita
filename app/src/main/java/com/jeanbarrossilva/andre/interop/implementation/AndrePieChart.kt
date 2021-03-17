@@ -2,21 +2,22 @@ package com.jeanbarrossilva.andre.interop.implementation
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.MPPointF
 import com.jeanbarrossilva.andre.extension.BooleanX.orFalse
 import com.jeanbarrossilva.andre.extension.ChartX.setOnChartValueSelectedListener
-import com.jeanbarrossilva.andre.extension.PieChartX.emptyData
+import com.jeanbarrossilva.andre.extension.PieChartX.setEmptyData
 import com.jeanbarrossilva.andre.interop.AndreChart
 import com.jeanbarrossilva.andre.interop.AndreChartEntry
 
 class AndrePieChart(context: Context): AndreChart<PieChart> {
 	override val view =
 		PieChart(context).apply {
-			data = emptyData
+			setEmptyData()
+			data.dataSet.colors.clear()
+			data.dataSet.iconsOffset = MPPointF(-20f, 0f)
 			legend?.isEnabled = false
 			description?.isEnabled = false
 			isDrawHoleEnabled = false
@@ -33,36 +34,9 @@ class AndrePieChart(context: Context): AndreChart<PieChart> {
 			view.data.dataSet.valueTextColor = if (value) Color.WHITE else Color.TRANSPARENT
 		}
 	
-	override fun setup() {
-		val pieEntries =
-			entries().map { it.toPieEntry() }.also {
-				for (entry in it)
-					entry.icon?.setTint(Color.WHITE)
-			}
-		val dataSet =
-			PieDataSet(pieEntries, "").apply {
-				colors = entries().map { it.color }
-			}
-		
-		view.data = PieData(dataSet)
-		view.data.dataSet.iconsOffset = MPPointF(-20f, 0f)
-	}
-	
-	override fun entries(): List<AndreChartEntry> {
-		val entries = mutableListOf<PieEntry>()
-		val dataSet = view.data.dataSet
-		val entryCount = dataSet.entryCount
-		
-		if (entryCount > 0)
-			for (index in 0..entryCount) {
-				val entry = dataSet.getEntryForIndex(index)
-				entries.add(entry!!)
-			}
-		return entries.map { it.toAndreChartEntry() }
-	}
-	
 	override fun add(entry: AndreChartEntry) {
 		view.data.dataSet.colors.add(entry.color)
+		Log.d("AndrePieChart.add", "Color after addition: ${view.data.dataSet.colors}")
 		view.data.dataSet.addEntry(entry.toPieEntry())
 		view.invalidate()
 	}
@@ -80,9 +54,5 @@ class AndrePieChart(context: Context): AndreChart<PieChart> {
 	private fun PieEntry.toAndreChartEntry(): AndreChartEntry {
 		val color = view.data.dataSet.colors[view.data.dataSet.getEntryIndex(this)]!!
 		return AndreChartEntry(label, icon, value, color)
-	}
-	
-	init {
-		setup()
 	}
 }

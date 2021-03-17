@@ -18,10 +18,6 @@ interface AndreChart<V: View> {
 		}
 	}
 	
-	fun setup()
-	
-	fun entries(): List<AndreChartEntry>
-	
 	fun add(entry: AndreChartEntry)
 	
 	fun add(entries: List<AndreChartEntry>) = entries.forEach { entry -> add(entry) }

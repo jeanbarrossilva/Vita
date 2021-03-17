@@ -5,5 +5,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 
 object PieChartX {
-	val PieChart.emptyData get() = PieData(PieDataSet(emptyList(), ""))
+	fun PieChart.setEmptyData() {
+		data = PieData(PieDataSet(mutableListOf(), ""))
+	}
 }
