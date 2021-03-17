@@ -2,7 +2,6 @@ package com.jeanbarrossilva.andre.interop.implementation
 
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -32,16 +31,6 @@ class AndrePieChart(context: Context): AndreChart<PieChart> {
 		set(value) {
 			field = value
 			view.data.dataSet.valueTextColor = if (value) Color.WHITE else Color.TRANSPARENT
-		}
-	override var onSelectEntry: (AndreChartEntry) -> Unit =
-		{ _: AndreChartEntry -> }.also {
-			Log.d("AndrePieChart.getOnSelectEntry", "Can't do that with PieChart!")
-		}
-		set(value) {
-			field = value
-			view.setOnChartValueSelectedListener { entry, _ ->
-				value((entry as PieEntry).toAndreChartEntry())
-			}
 		}
 	
 	override fun setup() {
@@ -76,6 +65,12 @@ class AndrePieChart(context: Context): AndreChart<PieChart> {
 		view.data.dataSet.colors.add(entry.color)
 		view.data.dataSet.addEntry(entry.toPieEntry())
 		view.invalidate()
+	}
+	
+	override fun setOnSelectEntryListener(listener: AndreChart.OnSelectEntryListener) {
+		view.setOnChartValueSelectedListener { entry, _ ->
+			listener.onSelectEntry((entry as PieEntry).toAndreChartEntry())
+		}
 	}
 	
 	private fun AndreChartEntry.toPieEntry() =
