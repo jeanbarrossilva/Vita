@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingTop="30dp"
+    android:paddingBottom="88dp">
+
+    <com.jeanbarrossilva.andre.ui.AndreLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30dp"
+        android:orientation="vertical"
+        android:verticalSpacing="30dp">
+
+        <com.jeanbarrossilva.andre.ui.AndreLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:verticalSpacing="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Theme.Andre.TextInputLayout"
+                android:id="@+id/title_field_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/AreaComposerFragment_hint_title"
+                app:startIconDrawable="@drawable/ic_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.jeanbarrossilva.andre.ui.AndreLinearLayout>
+
+        <com.jeanbarrossilva.andre.ui.AndreLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:verticalSpacing="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/AreaComposerFragment_subareas"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="?android:textColorPrimary" />
+
+            <com.jeanbarrossilva.andre.ui.AndreLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:verticalSpacing="5dp">
+
+                <com.jeanbarrossilva.andre.ui.AndreRecyclerView
+                    android:id="@+id/subarea_fields_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="true"
+                    android:spacing="5dp"
+                    tools:listitem="@layout/view_subarea_field" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Theme.Andre.Button.Outlined"
+                    android:id="@+id/add_subarea_field_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="15dp"
+                    android:text="@string/AreaComposerFragment_subareas_add"
+                    app:icon="@drawable/ic_add" />
+
+            </com.jeanbarrossilva.andre.ui.AndreLinearLayout>
+
+        </com.jeanbarrossilva.andre.ui.AndreLinearLayout>
+
+    </com.jeanbarrossilva.andre.ui.AndreLinearLayout>
+
+</ScrollView>

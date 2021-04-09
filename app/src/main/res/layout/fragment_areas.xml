@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/areas_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="88dp"
-    android:clipToPadding="false"
-    tools:listitem="@layout/view_area"
-    tools:itemCount="4" />
+    android:layout_height="match_parent">
+
+    <com.jeanbarrossilva.andre.ui.EmptyListView
+        android:id="@+id/emptyListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/EmptyListView_title_areas"
+        android:description="@string/EmptyListView_description_areas"
+        tools:visibility="visible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/areas_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="88dp"
+        android:clipToPadding="false"
+        tools:visibility="gone"
+        tools:listitem="@layout/view_area"
+        tools:itemCount="4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

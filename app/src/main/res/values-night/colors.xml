@@ -3,9 +3,8 @@
     <color name="statusBar">#303030</color>
     <color name="navigationBar">#121212</color>
     <color name="cardBackground">@color/cardview_dark_background</color>
-    <color name="andreBottomSheetTongue">#424242</color>
+    <color name="andreBottomSheetTongue">#393939</color>
     <color name="andreDialogFragmentBackground">#202020</color>
-    <color name="areaCardBackground">#212121</color>
     <color name="areaCardStroke">#212121</color>
     <color name="subareaIndicatorBubble">#303030</color>
 </resources>

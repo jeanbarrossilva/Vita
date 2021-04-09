@@ -11,7 +11,7 @@ import com.jeanbarrossilva.andre.extension.NumberX.dp
 
 class SubareaIndicatorView: AndreLinearLayout {
 	private val bubbles = children.filterIsInstance<CardView>()
-	private val deactivatedBubbleColor = context.getColor(R.color.subareaIndicatorBubble)
+	private val unsetBubbleColor = context.getColor(R.color.SubareaIndicator_unset)
 	
 	var subarea: Subarea? = null
 		set(value) {
@@ -31,7 +31,7 @@ class SubareaIndicatorView: AndreLinearLayout {
 			cardElevation = 0f
 			radius = 50.dp(context).toFloat()
 			layoutParams = LayoutParams(15.dp(context), 15.dp(context))
-			setCardBackgroundColor(deactivatedBubbleColor)
+			setCardBackgroundColor(unsetBubbleColor)
 		}
 	
 	private fun addBubbles() =
@@ -44,7 +44,7 @@ class SubareaIndicatorView: AndreLinearLayout {
 				bubbles.elementAt(index).setCardBackgroundColor(subarea.indicator.color)
 			}
 		} ?: run {
-			bubbles.forEach { bubble -> bubble.setCardBackgroundColor(deactivatedBubbleColor) }
+			bubbles.forEach { bubble -> bubble.setCardBackgroundColor(unsetBubbleColor) }
 		}
 	}
 	

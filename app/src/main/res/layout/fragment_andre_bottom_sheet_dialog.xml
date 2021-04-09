@@ -4,33 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
-    android:paddingTop="20dp"
     android:background="@drawable/bg_andre_bottom_sheet">
 
-    <ScrollView
+    <com.jeanbarrossilva.andre.ui.AndreLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:orientation="vertical"
+        android:verticalSpacing="10dp">
 
-        <com.jeanbarrossilva.andre.ui.AndreLinearLayout
+        <View
+            android:layout_width="100dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center_horizontal"
+            android:elevation="0dp"
+            android:background="@drawable/bg_andre_bottom_sheet_tongue" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:verticalSpacing="10dp">
-
-            <View
-                android:layout_width="100dp"
-                android:layout_height="5dp"
-                android:layout_gravity="center_horizontal"
-                android:elevation="0dp"
-                android:background="@drawable/bg_andre_bottom_sheet_tongue" />
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-        </com.jeanbarrossilva.andre.ui.AndreLinearLayout>
+        </ScrollView>
 
-    </ScrollView>
+    </com.jeanbarrossilva.andre.ui.AndreLinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -26,8 +26,24 @@
     <string name="SubareaIndicator_title_satisfied">Satisfied</string>
     <string name="SubareaIndicator_title_realized">Realized</string>
 
+    <string name="EmptyListView_title_areas">You don\'t have any areas.</string>
+    <string name="EmptyListView_description_areas">To add some, click the + button at the bottom right corner of the screen.</string>
+
     <string name="AreasFragment_label">Areas</string>
+    <string name="AreaComposerFragment_label">Add area</string>
+
+    <string name="AreaComposerFragment_hint_title">Title</string>
+    <string name="AreaComposerFragment_color">Color</string>
+    <string name="AreaComposerFragment_subareas">Subareas</string>
+    <string name="AreaComposerFragment_hint_indicator">Indicator</string>
+    <string name="AreaComposerFragment_subareas_add">Add</string>
+    <string name="AreaComposerFragment_done">Done</string>
+    <string name="AreaComposerFragment_error_empty_title">Title can\'t be empty.</string>
+    <string name="AreaComposerFragment_error_empty_subareas">An area must have at least one subarea.</string>
+
 
     <string name="AreaOptionsBottomSheetFragment_edit">Edit</string>
     <string name="AreaOptionsBottomSheetFragment_delete">Delete</string>
+    <string name="AreaOptionsBottomSheetFragment_dialog_title_delete">Are you sure you want to delete \"%s\"?</string>
+    <string name="AreaOptionsBottomSheetFragment_dialog_message_delete">This action cannot be undone.</string>
 </resources>

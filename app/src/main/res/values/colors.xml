@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="SubareaIndicator_unset">#E0E0E0</color>
     <color name="SubareaIndicator_deficient">#FF5252</color>
     <color name="SubareaIndicator_unsatisfied">#FF6E40</color>
     <color name="SubareaIndicator_acceptable">#FFD740</color>
@@ -13,7 +14,5 @@
     <color name="cardBackground">@color/cardview_light_background</color>
     <color name="andreBottomSheetTongue">#EAEAEA</color>
     <color name="andreDialogFragmentBackground">@color/cardBackground</color>
-    <color name="areaCardBackground">@android:color/background_light</color>
     <color name="areaCardStroke">#ECECEC</color>
-    <color name="subareaIndicatorBubble">#E0E0E0</color>
 </resources>

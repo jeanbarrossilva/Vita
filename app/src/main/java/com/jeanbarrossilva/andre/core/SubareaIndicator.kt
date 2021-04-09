@@ -16,7 +16,7 @@ sealed class SubareaIndicator(val title: String, @ColorInt val color: Int): Seri
 		SubareaIndicator(
 			context,
 			R.string.SubareaIndicator_title_unset,
-			android.R.color.transparent
+			R.color.SubareaIndicator_unset
 		)
 
 	data class Deficient(private val context: Context):

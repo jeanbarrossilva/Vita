@@ -1,6 +1,6 @@
 package com.jeanbarrossilva.andre.extension
 
 object AnyX {
-	fun <T> T.doIf(condition: T.() -> Boolean, block: T.() -> T) =
-		if (condition(this)) block(this) else this
+	fun <T> T.getIf(condition: T.() -> Boolean, action: T.() -> T) =
+		if (condition(this)) action(this) else this
 }

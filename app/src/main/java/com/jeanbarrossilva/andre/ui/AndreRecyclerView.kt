@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jeanbarrossilva.andre.R
-import com.jeanbarrossilva.andre.extension.AnyX.doIf
+import com.jeanbarrossilva.andre.extension.AnyX.getIf
 import com.jeanbarrossilva.andre.extension.ContextX.withStyledAttributes
 import com.jeanbarrossilva.andre.ui.itemdecoration.AndreItemDecoration
 import top.defaults.drawabletoolbox.DrawableBuilder
@@ -39,12 +39,13 @@ class AndreRecyclerView: RecyclerView {
 			AndreItemDecoration(context, orientation).apply {
 				setDrawable(
 					DrawableBuilder()
-						.doIf({ orientation == HORIZONTAL }) { width(spacing) }
-						.doIf({ orientation == VERTICAL }) { height(spacing) }
+						.getIf({ orientation == HORIZONTAL }) { width(spacing) }
+						.getIf({ orientation == VERTICAL }) { height(spacing) }
 						.build()
 				)
 			}
 		
+		this.layoutManager = layoutManager
 		addItemDecoration(decoration)
 	}
 	

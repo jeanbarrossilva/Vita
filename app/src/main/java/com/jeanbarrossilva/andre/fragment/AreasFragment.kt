@@ -13,8 +13,16 @@ class AreasFragment: BindingFragment<FragmentAreasBinding>({ inflater, container
 }) {
 	private val viewModel by viewModels<AreasViewModel> { factoryOf<AreasViewModel>(this) }
 	
+	override fun onResume() {
+		super.onResume()
+		viewModel.configFab()
+	}
+	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		viewModel.showAreas()
+		viewModel.run {
+			configEmptyListViewVisibility()
+			showAreas()
+		}
 	}
 }

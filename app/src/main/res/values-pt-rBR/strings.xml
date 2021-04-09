@@ -26,4 +26,17 @@
     <string name="SubareaIndicator_title_realized">Realizado</string>
     <string name="AreaOptionsBottomSheetFragment_delete">Remover</string>
     <string name="AreaOptionsBottomSheetFragment_edit">Editar</string>
+    <string name="AreaComposerFragment_hint_title">Título</string>
+    <string name="AreaComposerFragment_subareas">Subáreas</string>
+    <string name="AreaComposerFragment_hint_indicator">Indicador</string>
+    <string name="AreaComposerFragment_subareas_add">Adicionar</string>
+    <string name="AreaComposerFragment_done">OK</string>
+    <string name="EmptyListView_title_areas">Você não tem nenhuma área.</string>
+    <string name="EmptyListView_description_areas">Para adicionar, clique no botão + no canto inferior direito da tela.</string>
+    <string name="AreaComposerFragment_color">Cor</string>
+    <string name="AreaOptionsBottomSheetFragment_dialog_title_delete">Tem certeza de que deseja deletar \"%s\"?</string>
+    <string name="AreaOptionsBottomSheetFragment_dialog_message_delete">Essa ação não pode ser desfeita.</string>
+    <string name="AreaComposerFragment_label">Adicionar área</string>
+    <string name="AreaComposerFragment_error_empty_title">O título não pode ficar vazio.</string>
+    <string name="AreaComposerFragment_error_empty_subareas">A área deve ter ao menos uma subárea.</string>
 </resources>

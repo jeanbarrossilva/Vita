@@ -14,7 +14,7 @@ class AndreItemDecoration(context: Context, orientation: Int):
 		parent: RecyclerView,
 		state: RecyclerView.State
 	) {
-		val isLastItem = parent.getChildAdapterPosition(view) == state.itemCount - 1
+		val isLastItem = parent.getChildAdapterPosition(view) == state.itemCount
 		if (isLastItem) outRect.setEmpty() else super.getItemOffsets(outRect, view, parent, state)
 	}
 }
