@@ -31,10 +31,4 @@
             android:name="area"
             app:argType="com.jeanbarrossilva.andre.core.Area" />
     </dialog>
-
-    <fragment
-        android:id="@+id/areaComposerFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.AreaComposerFragment"
-        android:label="@string/AreaComposerFragment_label"
-        tools:layout="@layout/fragment_area_composer" />
 </navigation>

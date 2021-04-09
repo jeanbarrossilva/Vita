@@ -84,7 +84,7 @@ class AreaComposerViewModel(private val fragment: AreaComposerFragment): ViewMod
 		extractValues()
 		checkForErrors {
 			AreaRepository.add(Area(title, color, subareas))
-			fragment.findNavController().popBackStack()
+			fragment.activity?.finish()
 		}
 	}
 	

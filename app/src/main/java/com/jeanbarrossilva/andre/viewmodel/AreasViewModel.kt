@@ -1,5 +1,6 @@
 package com.jeanbarrossilva.andre.viewmodel
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeanbarrossilva.andre.BuildConfig
 import com.jeanbarrossilva.andre.R
+import com.jeanbarrossilva.andre.activity.AreaComposerActivity
 import com.jeanbarrossilva.andre.core.SubareaIndicator
 import com.jeanbarrossilva.andre.extension.ActivityX.withFab
 import com.jeanbarrossilva.andre.extension.NavControllerX.navigateOnce
@@ -34,8 +36,7 @@ class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
 				ColorStateList.valueOf(context.getColor(R.color.primary))
 			setImageResource(R.drawable.ic_add)
 			setOnClickListener {
-				val directions = AreasFragmentDirections.composeArea()
-				navController.navigateOnce(R.id.areaComposerFragment, directions)
+				fragment.startActivity(Intent(context, AreaComposerActivity::class.java))
 			}
 		}
 	}

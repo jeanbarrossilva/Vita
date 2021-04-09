@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_area_composer"
+    app:startDestination="@id/areaComposerFragment">
+
+    <fragment
+        android:id="@+id/areaComposerFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.AreaComposerFragment"
+        android:label="@string/AreaComposerFragment_label"
+        tools:layout="@layout/fragment_area_composer" />
+
+</navigation>
