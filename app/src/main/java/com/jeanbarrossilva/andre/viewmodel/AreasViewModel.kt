@@ -4,31 +4,31 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jeanbarrossilva.andre.BuildConfig
 import com.jeanbarrossilva.andre.R
 import com.jeanbarrossilva.andre.activity.AreaComposerActivity
-import com.jeanbarrossilva.andre.core.SubareaIndicator
+import com.jeanbarrossilva.andre.core.Area
 import com.jeanbarrossilva.andre.extension.ActivityX.withFab
 import com.jeanbarrossilva.andre.extension.NavControllerX.navigateOnce
 import com.jeanbarrossilva.andre.fragment.AreasFragment
 import com.jeanbarrossilva.andre.fragment.AreasFragmentDirections
 import com.jeanbarrossilva.andre.repo.AreaRepository
 import com.jeanbarrossilva.andre.ui.adapter.AreaAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
 	private val navController = fragment.findNavController()
-	private val areas = AreaRepository.getAreas()
 	
-	private fun configSubareaIndicatorsForDebugging() {
-		if (BuildConfig.DEBUG)
-			areas.value?.forEach { area ->
-				area.subareas.forEach { subarea ->
-					subarea.indicator = SubareaIndicator.values(fragment.context).random()
-				}
+	private fun withAreas(block: (List<Area>) -> Unit) =
+		AreaRepository.getAreasLiveData().observe(fragment) { entities ->
+			viewModelScope.launch(Dispatchers.IO) {
+				val areas = entities.map { entity -> entity.createArea(fragment.requireContext()) }
+				fragment.activity?.runOnUiThread { block(areas) }
 			}
-	}
+		}
 	
 	fun configFab() {
 		fragment.activity?.withFab {
@@ -42,17 +42,17 @@ class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
 	}
 	
 	fun configEmptyListViewVisibility() =
-		areas.observe(fragment) {
-			fragment.binding.emptyListView.isVisible = it.isEmpty()
-			fragment.binding.areasView.isVisible = it.isNotEmpty()
+		withAreas { areas ->
+			fragment.binding.emptyListView.isVisible = areas.isEmpty()
+			fragment.binding.areasView.isVisible = areas.isNotEmpty()
 			fragment.binding.root.invalidate()
 		}
 	
 	fun showAreas() {
-		areas.observe(fragment) {
+		withAreas { areas ->
 			fragment.binding.areasView.adapter =
 				AreaAdapter(
-					areas = it,
+					areas,
 					onLongClick = { area ->
 						val directions = AreasFragmentDirections.showOptionsOf(area)
 						navController.navigateOnce(R.id.areaOptionsBottomSheetFragment, directions)
@@ -60,9 +60,5 @@ class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
 				)
 		}
 		fragment.binding.areasView.layoutManager = LinearLayoutManager(fragment.context)
-	}
-	
-	init {
-		configSubareaIndicatorsForDebugging()
 	}
 }
